@@ -1,4 +1,4 @@
-_This is an assignment to the class [Programmieren 3](https://hsro-inf-prg3.github.io) at the [University of Applied Sciences Rosenheim](http://www.fh-rosenheim.de)._
+_This is an assignment to the class [Advanced Programming](https://hsro-inf-fpk.github.io) at the [University of Applied Sciences Rosenheim](http://www.th-rosenheim.de)._
 
 
 # Assignment 7: Composite and Observer
@@ -11,7 +11,7 @@ In this assignment, you will
 - use variants of the [_observer_](https://en.wikipedia.org/wiki/Observer_pattern) patterns.
 
 At the end of the day, you will have implemented a little app that retrieves the current meal plan of the cafeteria.
-You can also opt for a (slightly more complex) [example using Android](https://github.com/hsro-inf-prg3/07-composite-observer).
+You can also opt for a (slightly more complex) [example using Android](https://github.com/hsro-inf-fpk//07-composite-observer-android).
 
 
 > Note: JavaFX is been removed from recent JDKs.
