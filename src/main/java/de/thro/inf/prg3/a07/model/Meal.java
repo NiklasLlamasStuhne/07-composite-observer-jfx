@@ -3,8 +3,10 @@ package de.thro.inf.prg3.a07.model;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by Peter Kurfer on 11/19/17.
@@ -50,6 +52,15 @@ public class Meal {
 
 	public void setNotes(List<String> notes) {
 		this.notes = notes;
+	}
+
+	public boolean isVegetarian(){
+		for(String a:notes){
+			if (a.contains("fleisch")){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package de.thro.inf.prg3.a07.tests;
 
+import com.google.gson.Gson;
 import de.thro.inf.prg3.a07.api.OpenMensaAPI;
 import de.thro.inf.prg3.a07.model.Meal;
 import okhttp3.OkHttpClient;
@@ -12,7 +13,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class OpenMensaAPITests {
 
 	private static final Logger logger = LogManager.getLogger(OpenMensaAPITests.class);
-	private OpenMensaAPI openMensaAPI;
+	static private OpenMensaAPI openMensaAPI;
 
 	@BeforeAll
-	void setup() {
+	static void setup() {
 
 		// use this to intercept all requests and output them to the logging facilities
 		HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -35,7 +39,7 @@ class OpenMensaAPITests {
 
 		Retrofit retrofit = new Retrofit.Builder()
 			.addConverterFactory(GsonConverterFactory.create())
-			.baseUrl("https://openmensa.org/api/v2/")
+			.baseUrl("https://openmensa.org/")
 			.client(client)
 			.build();
 
@@ -44,12 +48,14 @@ class OpenMensaAPITests {
 
 	@Test
 	void testGetMeals() throws IOException {
-		// TODO prepare call
 
-		// TODO execute the call synchronously
 
+		OpenMensaAPI service = openMensaAPI;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+		String today = sdf.format(new Date());
 		// TODO unwrap the body
-		List<Meal> meals = null;
+		List<Meal> meals = service.getMeals(today).execute().body();
 
 		assertNotNull(meals);
 		assertNotEquals(0, meals.size());
